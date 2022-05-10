@@ -44,6 +44,7 @@ const listOdd = document.querySelector("ul.array-odd");
             // listOdd.innerHTML += `<li> ${randomNumArray[i]} </li>`;
         }
 
+        let
 
     }
 // });

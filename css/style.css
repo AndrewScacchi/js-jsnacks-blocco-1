@@ -26,12 +26,13 @@ ul {
 li {
     list-style: none;
     border: 1px solid black;
-    width: 100px;
-    height: 50px;
-    line-height: 50px;
+    width: 500px;
+    height: 100px;
     padding-left: 0.5em;
-    margin: 0.25em 0;
 }
-li.li-ext {
-    margin: 0 0 2.5em 0;
-}
+.li-int{
+    list-style: circle;
+    height: 2em;
+    line-height: 2em;
+    border: none;
+  }
