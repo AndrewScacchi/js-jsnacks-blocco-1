@@ -1,0 +1,11 @@
+ESERCIZIO DI JAVASCRIPT
+
+ESERCIZIO 1
+"Creo un Array, vuoto, riempito automaticamente con 10 n^ casuali, pure doppioni, nel range 1-1000, stampare in console.log/pagina"
+
+ESERCIZIO 2
+"Crea due tag div con due id diversi. 
+Un div avrà il testo colorato di rosso mentre l’altro di verde. 
+Partendo da un array di 20 numeri (generati come prima), stampiamo nell’id rosso i numeri dispari e in verde i numeri pari"
+
+
