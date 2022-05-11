@@ -2,91 +2,73 @@
 console.log("Hello World!");
 // Creare due array, 5 stringhe il primo, 2 il secondo
 
-const arrayBig = [
-    "coccodrillo",
-    "gatto",
-    "cane",
-    "piccione",
-    "porceddu"
+const firstArray = [
+    "parola1-1",
+    "parola2-1",
+    "parola3-1",
+    "parola4-1",
+    "parola5-1"
 ];
-const arraySmall = [
-    "cotto alla griglia",
-    "cotto alla piastra"
+const secondArray = [
+    "parola1-2",
+    "parola2-2"
 ];
 
-// console.log(arrayBig);
-// console.log(arraySmall);
+//CORREZIONE ESERCIZIO
 
-const ulExt = document.querySelector("ul.list-external");
+//seleziona ul di primo livello
+const firstLevUl = document.querySelector("ul.first-level");
 
-// creo una UL con LI in base all'array dato
-for (i = 0; i < arrayBig.length ; i++){
-    const liExt = document.createElement(`li`);
-    const ulInt = document.createElement("ul");
+//level 1
+for (let i = 0; i < firstArray.length; i++){
+    //estrapolo contenuto iesimo del primo array
+    let firstLevContent = firstArray[i];
+    //creo il LI di primo livello
+    let firstLevLi = document.createElement("li");
+    //inserisco il contenuto del LI, primo livello
+    firstLevLi.append(firstLevContent);
+    //inserisco il LI di primo livello creato nel UL di primo livello.
+    firstLevUl.append(firstLevLi);
 
-    liExt.classList.add("li-ext");
-    // liExt.classList.add(`li-ext-${i+1}`);
-    //appending for LI to UL and later content to LI
-    ulExt.append(liExt);
-    liExt.append(arrayBig[i]);
-    liExt.append(ulInt);
-    ulInt.classList.add(`.ul-int-${i+1}`);
-    for (e = 0; e < arraySmall.length; e++){
-        const ulCreated = document.querySelector(`.ul-int-${i+1}`);
-        const liInt = document.createElement("li");
-        
-        console.log(arraySmall[e]);
-        //il dannato console log funziona.
+    //questo creato serve fuori del 2nd ciclo for per evitare ripetizioni
+    let secondLevUl = document.createElement("ul");
 
+    //livello 2 annidamento
+    for (let j = 0; j < secondArray.length; j++){
+        let secondLevContent = secondArray[j];
+        let secondLevLi = document.createElement("li");
 
+        secondLevLi.append(secondLevContent);
+        secondLevUl.append(secondLevLi);
+        firstLevLi.append(secondLevUl);
 
-        //PERCHE' CAZZO NON FUNZIONI STRONZO!
-        // ulCreated.append(liInt);
-        // liInt.append(arraySmall[e]);
     }
 
-    // for (i=0; i < arraySmall.length ; i++){
-    //     const ulCreated = document.querySelector(`.ul-int-${i+1}`);
-        
-    //     const liInt = document.createElement("li");
-
-    //     ulCreated.append(liInt);
-    //     liInt.append(arraySmall[i]);
-    // }
-    // 
-
-    // let liInt = document.querySelector(`li-ext-${i+1}`);
-    // console.log(liInt);
-
-    
-    
 }
 
-//for each new LI created, create a new UL and an LI inside
-// for (i = 0; i < arrayBig.length ; i++){
-//     const liExt = document.querySelector(`.li-ext-${i+1}`);
-//     const ulInt = document.createElement("ul");
+
+//SECOND TEST REDUX
+
+const ulExt = document.querySelector("ul.second-test");
+
+// creo una UL con LI in base all'array dato
+for (a = 0; a < firstArray.length ; a++){
+    let liExt = document.createElement(`li`);
+    let liExtContent = firstArray[a];
+
+    liExt.append(liExtContent);
+    ulExt.append(liExt);
     
-//     liExt.append(ulInt);
-//     ulInt.classList.add(`ul-int-${i+1}`);
-// }
-//ora per ogni ul-int-nn devo creare una nuova serie di LI devo selezionare ogni singolo UL interno in base alla suo classe..e per ognuno di questi creare un ulteriore ciclo di LI.. è un ciclo dentro ad un altro ciclo... come ovviare?
-
-// for (i = 0; i < arraySmall.length ; i++){
-//     const ulInt = document.querySelector(`.ul-int-${i+1}`);
-//     const liInt = document.createElement("li");
-
-//     ulInt.append(liInt);
-//     liInt.append(arraySmall[i]);
-//     liInt.classList.add("li-int");
+    let ulInt = document.createElement("ul");
     
-    
-// }
+    for (e = 0; e < secondArray.length; e++){
+        let liInt = document.createElement("li");
+        let liIntContent = secondArray[e];
 
-
-
-
-
-
-// seleziono ogni singolo LI creato e comando di creare al suo interno una UL e dei nuovi LI dal secondo array.Come fare? la parte di codice da assegnare è la stessa, quindi è un copia e incolla. Potrei assegnare ad ogni LI creato un id numerico e ragionare con quello.
-
+        liInt.append(liIntContent);
+        ulInt.append(liInt);
+        liExt.append(ulInt);
+    }
+}
+//ANALISI
+// Deduco che il mio errore sia stato invertire le dichiarazioni append(), appendevo a un elemento un elemento non ancora definito e il programma gettato un null error..
